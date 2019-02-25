@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block error %}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        body {
+        }
+        form {
+
+        }
+        input{ }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="col-lg-10 box-form">
+            <h1>{{ title }}</h1>
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="col-lg-8 box-form">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" class="btn btn-success" value="Edit" onclick="return confirm('¿Esta seguro?')">
+                    {{ form_errors(form) }}
+                    {{ form_end(form) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

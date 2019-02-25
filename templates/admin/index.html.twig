@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ dump(users) }}
+    {% if is_granted("ROLE_ADMIN") %}
+        <h1>Users Administration</h1>
+        <a class="nav-link" href="{{ path('app_new_user')}}">Nuevo Usuario</a>
+        <table>
+            {% for user in users %}
+                <tr>
+                    <td> {{ user.email }}<td>
+                    <td><a class="nav-link" href="{{ path('app_user_edit',{'id':user.id} )}}">Edit</a></td>
+                    <td><a class="nav-link" href="{{ path('app_user_delete',{'id':user.id} )}}" onclick="return confirm('¿Esta seguro que desea eliminar este usuario?')">X</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}
