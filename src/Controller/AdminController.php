@@ -35,7 +35,7 @@ class AdminController extends AbstractController
      */
     public function editUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id)
     {
-        $title="Edit user";
+        $title="Edit";
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
         //create the form
         $form = $this->createForm(EditUserType::class, $user);
@@ -70,7 +70,7 @@ class AdminController extends AbstractController
      */
     public function newUser (Request $request, UserPasswordEncoderInterface $passwordEncoder){
 
-        $title="Create new user";
+        $title="Create";
         $user=new User();
         $user->setIsActive(true);
         //create the form
