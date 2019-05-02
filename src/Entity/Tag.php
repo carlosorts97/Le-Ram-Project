@@ -24,7 +24,7 @@ class Tag
     private $tag;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Post", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Post", mappedBy="tags",cascade={"remove"})
      */
     private $posts;
 
@@ -48,6 +48,11 @@ class Tag
         $this->tag = $tag;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->tag;
     }
 
     /**

@@ -2,25 +2,24 @@
 {% block error %}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
     <style type="text/css">
         body {
         }
         form                                                                                                                                                    {
             background-color:#C9C9C9;
-            padding: 20px;
+            padding: 30px;
+            margin-bottom: 60px;
         }
-        input{
 
-        }
         label{
-
         }
     </style>
 {% endblock %}
 {% block body %}
     <div class="container">
         <div class="col-lg-10 box-form">
-            <h1>{{ title }} User</h1>
+            <h1>{{ title }} Post</h1>
                 <div class="col-lg-8 box-form">
                     {{ form_start(form) }}
                     {{ form_widget(form) }}
@@ -30,4 +29,16 @@
                 </div>
         </div>
     </div>
+    <div class="container"></div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{asset("js/bootstrap-tagsinput.js")}}"></script>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            height:'300px',
+        });
+    </script>
 {% endblock %}

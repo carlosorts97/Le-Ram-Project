@@ -22,3 +22,12 @@ code {
 header{
     margin-bottom: 70px;
 }
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+#user_button{
+    align-self: flex-end;
+}

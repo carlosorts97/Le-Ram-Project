@@ -10,7 +10,7 @@
             padding: 20px;
         }
         input{
-
+            margin-bottom:20px;
         }
         label{
 
@@ -20,14 +20,13 @@
 {% block body %}
     <div class="container">
         <div class="col-lg-10 box-form">
-            <h1>{{ title }} User</h1>
-                <div class="col-lg-8 box-form">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <input type="submit" class="btn btn-success" value="{{ title }}" onclick="return confirm('¿Esta seguro?')">
-                    {{ form_errors(form) }}
-                    {{ form_end(form) }}
-                </div>
+            <h1>{{ title }} Tag</h1>
+            <div class="col-lg-8 box-form">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 {% endblock %}

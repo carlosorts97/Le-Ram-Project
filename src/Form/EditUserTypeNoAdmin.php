@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EditUserType extends AbstractType
+class EditUserTypeNoAdmin extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -39,18 +39,10 @@ class EditUserType extends AbstractType
             ])
             ->add('plainpassword',PasswordType::class,[
                 'required' => 'required',
-                    'attr' =>[
-                        'class' => 'form-password form-control',
-                        'placeholder' => 'Password'
-                    ]
-            ])
-            ->add('roles', ChoiceType::class,[
-                'choices' => Array(
-                    'Administrador'=>"ROLE_ADMIN",
-                    'Usuario'=>"ROLE_USER",
-                ),
-                'expanded'  => true,
-                'multiple'  => true,
+                'attr' =>[
+                    'class' => 'form-password form-control',
+                    'placeholder' => 'Password'
+                ]
             ]);
 
     }

@@ -1,8 +1,56 @@
-{% extends 'base.html.twig' %}
-{% block stylessheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-{% endblock %}
-{% block body %}
-    <h1>Blog</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="script.js"></script>
+    <style type="text/css">
+    body{
+        background-color: #555555;
+    }
+    div{
+        color:white;
+    }
+    a{
+        width: 170px;
+    }
+    .container{
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+        height: 100px;
+        margin-top: 170px;
+
+    }
+    .container div{
+        width: 400px;
+        padding: 30px;
+        border-radius: 5px;
+        align-self: center;
+        border: 4px solid white;
+    }
+
+    </style>
+</head>
+<body class="text-center ">
+<div>
+    <h1>Blog Corts</h1>
+    <p class="lead">Crea tu blog en tan sólo unos segundos, y entra en nuestro universo</p>
+</div>
+<div class="container">
+    <div>
+        <h2>Registrate</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing ath the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <a href="{{ path('app_register') }}" class="btn btn-lg btn-success">Registrate</a>
+    </div>
+    <div>
+        <h2>Inicia Sesion</h2>
+        <p>Lorem Ipsum is simply dummy text of the ker including versions of Lorem Ipsum.</p>
+        <a href="{{ path('app_login') }}" class="btn btn-lg btn-secondary">Inicia Sesion</a>
+    </div>
+</div>
+
+</body>
+</html>

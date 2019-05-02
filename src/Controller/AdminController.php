@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\User;
+use App\Entity\Post;
 use App\Form\EditUserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -14,11 +15,22 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 /**
  * Class AdminController
  * @package App\Controller
- * @IsGranted("ROLE_ADMIN")
+ *@IsGranted("ROLE_ADMIN")
  *
  */
 class AdminController extends AbstractController
 {
+    /**
+     * @Route("/post/admin", name="app_posts_admin")
+     */
+    public function posts_admin(){
+
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        return $this->render('admin/posts.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
     /**
      * @Route("/admin", name="app_admin")
      */

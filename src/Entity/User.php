@@ -52,7 +52,7 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
     }
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true, unique=true)
      */
     private $username;
 
@@ -78,12 +78,12 @@ class User implements UserInterface
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user",cascade={"remove"})
      */
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user",cascade={"remove"})
      */
     private $comments;
 
@@ -117,7 +117,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**

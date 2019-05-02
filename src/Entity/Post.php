@@ -25,7 +25,7 @@ class Post
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="posts", cascade={"persist"})
      */
     private $tags;
 
@@ -35,7 +35,7 @@ class Post
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="post",cascade={"remove"})
      */
     private $comments;
 

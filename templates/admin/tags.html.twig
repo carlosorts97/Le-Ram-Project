@@ -5,7 +5,7 @@
         body {
         }
         table{
-            width: 500px;
+            width: 300px;
             margin-left: 50px;
         }
         td{
@@ -25,23 +25,21 @@
 {% block body %}
     {% if is_granted("ROLE_ADMIN") %}
         <div id="new">
-            <h1>Users Administration</h1>
-            <a class="btn btn-success" href="{{ path('app_new_user')}}">Nuevo Usuario</a>
+            <h1>Tags Administration</h1>
+            <a class="btn btn-success" href="{{ path('app_new_tag')}}">New Tag</a>
         </div>
 
         <table>
             <tr class="bg-dark">
-                <td>Email<td>
-                <td>Username<td>
-                <td></td>
-                <td></td>
+                <td>Tag Name<td>
+                <td colspan="2"></td>
+
             </tr>
-            {% for user in users %}
+            {% for tag in tags %}
                 <tr>
-                    <td> {{ user.email }}<td>
-                    <td> {{ user.username }}<td>
-                    <td><a class="btn btn-secondary" href="{{ path('app_user_edit',{'id':user.id} )}}">Edit</a></td>
-                    <td><a class="btn btn-danger" href="{{ path('app_user_delete',{'id':user.id} )}}" onclick="return confirm('¿Esta seguro que desea eliminar este usuario?')">X</a></td>
+                    <td> {{ tag.tag }}</td>
+                    <td colspan="2"><a class="btn btn-secondary " href="{{ path('app_edit_tag',{'id':tag.id} )}}">Edit</a></td>
+                    <td colspan="2"><a class="btn btn-danger " href="{{ path('app_tag_delete',{'id':tag.id} )}}" onclick="return confirm('¿Esta seguro que desea eliminar este tag?')">X</a></td>
                 </tr>
             {% endfor %}
         </table>
