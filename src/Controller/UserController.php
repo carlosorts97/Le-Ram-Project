@@ -82,7 +82,7 @@ class UserController extends AbstractController
             $this->addFlash(
                 'succes', 'User created'
             );
-            return $this->redirectToRoute('app_posts');
+            return $this->redirectToRoute('app_login');
         }
 
         //render the form
@@ -106,6 +106,10 @@ class UserController extends AbstractController
             'error'=>$error,
             'last_username'=>$lastUsername
         ]);
+
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_posts');
+        }
     }
 
     /**
