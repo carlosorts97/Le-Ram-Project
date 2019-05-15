@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Cities;
 use App\Entity\Countries;
+use App\Entity\Roles;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
@@ -29,6 +31,8 @@ class UserController extends AbstractController
         $user=new User();
         $city = new Cities();
         $country = new Countries();
+        $role = new Roles();
+        $role->setRole("User");
         $country->setName("EEESSSSPAÑA");
         $city->setName("Castelldefels");
         $city->setCountry($country);
@@ -42,7 +46,7 @@ class UserController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             //encrypt password
             $user->setCity($city);
-            $user->setRoles("User");
+            $user->setRoles($role);
             $password=$passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             //handle the entities
@@ -52,7 +56,7 @@ class UserController extends AbstractController
             $this->addFlash(
                 'succes', 'User2 created'
             );
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_homepage');
         }
 
         //render the form
@@ -61,5 +65,24 @@ class UserController extends AbstractController
             'form'=>$form->createView()
         ]);
 
+    }
+    /**
+     * @param Request $request
+     * @param AuthenticationUtils $authUtils
+     * @Route("/login",name="app_login")
+     */
+    public function login(Request $request, AuthenticationUtils $authUtils){
+        $error=$authUtils->getLastAuthenticationError();
+        $lastUsername=$authUtils->getLastUsername();
+        return $this->render('user/login.html.twig', [
+            'error'=>$error,
+            'last_username'=>$lastUsername
+        ]);
+    }
+    /**
+     * @Route("/logout", name="app_logout")
+     */
+    public function logout(){
+        $this->redirectToRoute('/');
     }
 }
