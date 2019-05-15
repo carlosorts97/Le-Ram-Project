@@ -2,36 +2,37 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * User
+ *
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_roles_users", columns={"roles"}), @ORM\Index(name="fk_city_users", columns={"city"})})
+ * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
 class User implements UserInterface
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idUser;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=100, nullable=false)
      */
-    private $email;
+    private $username;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=100, nullable=false)
      */
     private $password;
     private $plainPassword;
@@ -51,51 +52,96 @@ class User implements UserInterface
     {
         $this->plainPassword = $plainPassword;
     }
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true, unique=true)
-     */
-    private $username;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $isActive;
+    private $email;
 
     /**
-     * @return mixed
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    public function getisActive()
+    private $name;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="surname", type="string", length=255, nullable=true)
+     */
+    private $surname;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="telephone", type="string", length=9, nullable=true, options={"fixed"=true})
+     */
+    private $telephone;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthday", type="date", nullable=false)
+     */
+    private $birthday;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255, nullable=false)
+     */
+    private $address;
+
+    /**
+     * @var \Cities
+     *
+     * @ORM\ManyToOne(targetEntity="Cities", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="city", referencedColumnName="id_city")
+     * })
+     */
+    private $city;
+
+    /**
+     * @var \Roles
+     *
+     * @ORM\ManyToOne(targetEntity="Roles", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="roles", referencedColumnName="id_role")
+     * })
+     */
+    private $roles;
+
+    public function getIdUser(): ?int
     {
-        return $this->isActive;
+        return $this->idUser;
     }
 
-    /**
-     * @param mixed $isActive
-     */
-    public function setIsActive($isActive): void
+    public function getUsername(): ?string
     {
-        $this->isActive = $isActive;
+        return $this->username;
     }
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user",cascade={"remove"})
-     */
-    private $posts;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user",cascade={"remove"})
-     */
-    private $comments;
-
-    public function __construct()
+    public function setUsername(string $username): self
     {
-        $this->posts = new ArrayCollection();
-        $this->comments = new ArrayCollection();
+        $this->username = $username;
+
+        return $this;
     }
 
-    public function getId(): ?int
+    public function getPassword(): ?string
     {
-        return $this->id;
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -110,133 +156,111 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
+    public function getName(): ?string
     {
-        return (string) $this->username;
+        return $this->name;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
+    public function setName(string $name): self
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $this->name = $name;
 
-        return array_unique($roles);
+        return $this;
     }
 
-    public function setRoles(array $roles): self
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(?string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getCity(): ?Cities
+    {
+        return $this->city;
+    }
+
+    public function setCity(?Cities $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getRoles(): ?Roles
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(?Roles $roles): self
     {
         $this->roles = $roles;
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getPassword(): string
-    {
-        return (string) $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
 
     /**
-     * @see UserInterface
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
      */
     public function getSalt()
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        // TODO: Implement getSalt() method.
     }
 
     /**
-     * @see UserInterface
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
      */
     public function eraseCredentials()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-    public function setUsername(?string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Post[]
-     */
-    public function getPosts(): Collection
-    {
-        return $this->posts;
-    }
-
-    public function addPost(Post $post): self
-    {
-        if (!$this->posts->contains($post)) {
-            $this->posts[] = $post;
-            $post->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePost(Post $post): self
-    {
-        if ($this->posts->contains($post)) {
-            $this->posts->removeElement($post);
-            // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Comment[]
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->contains($comment)) {
-            $this->comments->removeElement($comment);
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
-
-        return $this;
+        // TODO: Implement eraseCredentials() method.
     }
 }

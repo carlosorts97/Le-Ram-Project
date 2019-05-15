@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: linux
+ * User2: linux
  * Date: 05/02/19
  * Time: 17:23
  */
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\User2;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -28,6 +28,20 @@ class EditUserType extends AbstractType
                 'attr'=>[
                     'class' => 'form-username form-control',
                     'placeholder' => 'Username'
+                ]
+            ])
+            ->add('name', TextType::class,[
+                'required' => 'required',
+                'attr'=>[
+                    'class' => 'form-username form-control',
+                    'placeholder' => 'Name'
+                ]
+            ])
+            ->add('surname', TextType::class,[
+                'required' => 'required',
+                'attr'=>[
+                    'class' => 'form-username form-control',
+                    'placeholder' => 'Surname'
                 ]
             ])
             ->add('email', EmailType::class,[
@@ -56,6 +70,6 @@ class EditUserType extends AbstractType
     }
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['data_class'=>'App\Entity\User']);
+        $resolver->setDefaults(['data_class'=> 'App\Entity\User2']);
     }
 }

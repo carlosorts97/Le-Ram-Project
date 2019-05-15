@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Entity\User;
+use App\Entity\User2;
 use App\Entity\Post;
 use App\Form\EditUserType;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +36,7 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $users = $this->getDoctrine()->getRepository(User2::class)->findAll();
         return $this->render('admin/index.html.twig', [
             'users' => $users
         ]);
@@ -48,7 +48,7 @@ class AdminController extends AbstractController
     public function editUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id)
     {
         $title="Edit";
-        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $user = $this->getDoctrine()->getRepository(User2::class)->find($id);
         //create the form
         $form = $this->createForm(EditUserType::class, $user);
 
@@ -64,7 +64,7 @@ class AdminController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash(
-                'succes', 'User created'
+                'succes', 'User2 created'
             );
             return $this->redirectToRoute('app_admin');
         }
@@ -83,7 +83,7 @@ class AdminController extends AbstractController
     public function newUser (Request $request, UserPasswordEncoderInterface $passwordEncoder){
 
         $title="Create";
-        $user=new User();
+        $user=new User2();
         $user->setIsActive(true);
         //create the form
         $form=$this->createForm(EditUserType::class,$user);
@@ -100,7 +100,7 @@ class AdminController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash(
-                'succes', 'User created'
+                'succes', 'User2 created'
             );
             return $this->redirectToRoute('app_admin');
         }
@@ -121,7 +121,7 @@ class AdminController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $user = $this->getDoctrine()->getRepository(User2::class)->find($id);
 
         $em->remove($user);
         $em->flush();
