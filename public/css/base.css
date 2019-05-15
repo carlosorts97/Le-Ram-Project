@@ -29,6 +29,7 @@ body {
     -moz-transition: all ease-out .5s;
     -o-transition: all ease-out .5s;
     transition: all ease-out .5s;
+    margin-bottom: 100px;
 }
 /*Active es la clase que se usa para cambiar la apariencia de la cabecera cuando hacemos scroll*/
 .active{
