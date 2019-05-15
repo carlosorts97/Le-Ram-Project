@@ -1,0 +1,92 @@
+html{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+.cabecera{
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-family: 'Secular One', sans-serif;
+    background-color: #222222;
+    -webkit-transition: all ease-out .5s;
+    -moz-transition: all ease-out .5s;
+    -o-transition: all ease-out .5s;
+    transition: all ease-out .5s;
+}
+/*Active es la clase que se usa para cambiar la apariencia de la cabecera cuando hacemos scroll*/
+.active{
+    background-color: red;
+}
+.cabecera .row div{
+}
+.cabecera .row{
+    margin-bottom: 10px;
+}
+.primera{
+    height:120px;
+}
+.lupa{
+    padding:3.5px;
+    background-color: #7A306C;
+    border-radius:0px;
+}
+.login:hover{
+    text-decoration: none;
+    color:darkgrey;
+}
+.login{
+    color:white;
+}
+h1{
+    font-size: 46px; margin-top: 10px;
+}
+
+.login:hover{
+    text-decoration: none;
+    color: darkgrey;
+}
+.form-control{
+    border-radius: 0px;
+}
+.btn-navegar{
+    background-color: #7A306C;
+}
+
+.signika{
+    font-family: 'Signika', sans-serif;
+}
+
+footer{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #3C362A;
+    text-align: center;
+    color:white;
+    font-size: 10px;
+}
+footer h4{
+    font-size: 16px;
+}
+footer p{
+    margin: 0px;
+}
