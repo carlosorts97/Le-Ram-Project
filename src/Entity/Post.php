@@ -19,7 +19,7 @@ class Post
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="User2", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -75,12 +75,12 @@ class Post
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?User2
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User2 $user): self
     {
         $this->user = $user;
 

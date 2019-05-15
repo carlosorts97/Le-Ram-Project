@@ -33,7 +33,7 @@ class Sells
     /**
      * @var \Users
      *
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="buyer", referencedColumnName="id_user")
      * })
@@ -43,7 +43,7 @@ class Sells
     /**
      * @var \Users
      *
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="seller", referencedColumnName="id_user")
      * })
@@ -90,24 +90,24 @@ class Sells
         return $this;
     }
 
-    public function getBuyer(): ?Users
+    public function getBuyer(): ?User
     {
         return $this->buyer;
     }
 
-    public function setBuyer(?Users $buyer): self
+    public function setBuyer(?User $buyer): self
     {
         $this->buyer = $buyer;
 
         return $this;
     }
 
-    public function getSeller(): ?Users
+    public function getSeller(): ?User
     {
         return $this->seller;
     }
 
-    public function setSeller(?Users $seller): self
+    public function setSeller(?User $seller): self
     {
         $this->seller = $seller;
 

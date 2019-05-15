@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: linux
+ * User2: linux
  * Date: 05/02/19
  * Time: 17:23
  */
@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class UserType extends AbstractType
 {
@@ -29,12 +30,45 @@ class UserType extends AbstractType
                     'placeholder' => 'Username'
                 ]
             ])
+            ->add('name', TextType::class,[
+                'required' => 'required',
+                'attr'=>[
+                    'class' => 'form-username form-control',
+                    'placeholder' => 'Name'
+                ]
+            ])
+            ->add('surname', TextType::class,[
+                'required' => 'required',
+                'attr'=>[
+                    'class' => 'form-username form-control',
+                    'placeholder' => 'Surname'
+                ]
+            ])
             ->add('email', EmailType::class,[
                 'required' =>'required',
                 'attr' =>[
                     'class' => 'form-email form-control',
                     'placeholder' => 'Email@email'
                 ]
+            ])
+            ->add('telephone', TextType::class,[
+                'required' => 'required',
+                'attr'=>[
+                    'class' => 'form-username form-control',
+                    'placeholder' => 'telephone'
+                ]
+            ])
+            ->add('address', TextType::class,[
+                'required' => 'required',
+                'attr'=>[
+                    'class' => 'form-username form-control',
+                    'placeholder' => 'address'
+                ]
+            ])
+            ->add('birthday', DateType::class, [
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
             ])
             ->add('plainpassword',RepeatedType::class,[
                 'type' => PasswordType::class,
@@ -56,6 +90,6 @@ class UserType extends AbstractType
     }
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['data_class'=>'App\Entity\User']);
+        $resolver->setDefaults(['data_class'=> 'App\Entity\User']);
     }
 }

@@ -22,7 +22,7 @@ class Comment
     private $comment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="User2", inversedBy="comments")
      */
     private $user;
 
@@ -49,12 +49,12 @@ class Comment
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?User2
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User2 $user): self
     {
         $this->user = $user;
 

@@ -31,7 +31,7 @@ class Cities
     /**
      * @var \Countries
      *
-     * @ORM\ManyToOne(targetEntity="Countries")
+     * @ORM\ManyToOne(targetEntity="Countries", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="country", referencedColumnName="id_country")
      * })
