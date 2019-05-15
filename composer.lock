@@ -384,6 +384,7 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
+<<<<<<< HEAD
             "version": "1.11.0",
             "source": {
                 "type": "git",
@@ -394,6 +395,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/6e15d2d9a8f90c0f9b5664b0db92686ff14fcd7d",
                 "reference": "6e15d2d9a8f90c0f9b5664b0db92686ff14fcd7d",
+=======
+            "version": "1.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineBundle.git",
+                "reference": "09a38417339dc93849d051b914aae3947eb231a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/09a38417339dc93849d051b914aae3947eb231a7",
+                "reference": "09a38417339dc93849d051b914aae3947eb231a7",
+>>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
                 "shasum": ""
             },
             "require": {
@@ -469,7 +482,11 @@
                 "orm",
                 "persistence"
             ],
+<<<<<<< HEAD
             "time": "2019-05-10T13:27:28+00:00"
+=======
+            "time": "2019-05-13T14:30:38+00:00"
+>>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -4304,6 +4321,7 @@
         },
         {
             "name": "twig/twig",
+<<<<<<< HEAD
             "version": "v2.9.0",
             "source": {
                 "type": "git",
@@ -4314,6 +4332,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/twigphp/Twig/zipball/82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
                 "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
+=======
+            "version": "v2.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5240e21982885b76629552d83b4ebb6d41ccde6b",
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b",
+>>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
                 "shasum": ""
             },
             "require": {
@@ -4329,7 +4359,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "2.9-dev"
+=======
+                    "dev-master": "2.10-dev"
+>>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
                 }
             },
             "autoload": {
@@ -4367,7 +4401,11 @@
             "keywords": [
                 "templating"
             ],
+<<<<<<< HEAD
             "time": "2019-04-28T06:57:38+00:00"
+=======
+            "time": "2019-05-14T12:03:52+00:00"
+>>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
         },
         {
             "name": "zendframework/zend-code",
