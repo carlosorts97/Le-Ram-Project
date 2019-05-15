@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Blog!{% endblock %}</title>
+        <title>{% block title %}Le-Ram{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             {% if app.user != null %};
             <div>
-                <a class="navbar-brand" href="{{ path('app_posts') }}">Corts Blog</a>
+                <a class="navbar-brand" href="{{ path('app_posts') }}">Le-Ram</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

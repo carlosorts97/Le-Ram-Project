@@ -27,7 +27,7 @@ class AdminController extends AbstractController
 
         $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
         return $this->render('admin/posts.html.twig', [
-            'post' => $post
+            'posts' => $posts
         ]);
     }
 
