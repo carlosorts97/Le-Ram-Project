@@ -71,6 +71,13 @@
             padding:5px;
             background-color: #7A306C
         }
+        .login:hover{
+            text-decoration: none;
+            color:darkgrey;
+        }
+        .login{
+            color:white;
+        }
         .btn-navegar{ background-color: #7A306C}
     </style>
 </head>
@@ -81,10 +88,10 @@
             <div class="row text-center primera">
                 <div class="col-md-3 align-self-center text-left"><h3>Le-Ram</h3></div>
                 <div class="col-md-6 align-self-center"><h1>Compra.Vende.<br/>Authentic streetwear</h1></div>
-                <div class="col-md-3 align-self-flex-start text-right">Login</div>
+                <div class="col-md-3 align-self-flex-start text-right"><a class="login" href="{{ path('app_register') }}">Login/Sign Up</a></div>
             </div>
             <div class="row text-center align-items-end">
-                <div class="col-lg-3 text-left"><a class="btn btn-lg btn-navegar">Navegar</a></div>
+                <div class="col-lg-3 text-left"><a class="btn btn-lg btn-navegar" src="google.es">Navegar</a></div>
                 <div class="col-lg-6 text-center justify-content-center">
                     <form class="form-inline mt-2 mt-md-0 justify-content-center">
                         <input class="form-control col-md-6" type="text" placeholder="Search" aria-label="Search">
