@@ -22,7 +22,7 @@ class UsersController extends AbstractController
     /**
      * @Route("/register",name="app_register")
      */
-    public function register (Request $request{
+    public function register (Request $request){
         $user=new Users();
         //create the form
         $form=$this->createForm(UserType::class,$user);
