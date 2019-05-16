@@ -14,16 +14,16 @@
     <body>
     <header>
             <div class="cabecera">
-                <div class="row text-center primera">
-                    <div class="col-md-3 align-self-center text-left"><h3>Le-Ram</h3></div>
-                    <div class="col-md-6 align-self-center"><h1>Compra.Vende.<br/>Authentic streetwear.</h1></div>
-                    <div class="col-md-3 align-self-flex-start text-right"><a class="login" href="{{ path('app_login') }}">Login</a>/<a class="login" href="{{ path('app_register') }}">Sign Up</a></div>
+                <div class="row text-center">
+                    <div class="col-md-3 align-self-center text-left"><h3 class="icono">Le-Ram</h3></div>
+                    <div class="col-md-6 text-center"><h3 class="logo">Compra.Vende.<br/>Authentic streetwear.</h3></div>
+                    <div class="col-md-3 text-right align-self-start login"><a class="login" href="{{ path('app_login') }}">Login</a>/<a class="login" href="{{ path('app_register') }}">Sign Up</a></div>
                 </div>
 
                 <div class="row text-center align-items-end">
                     <div class="col-lg-3 text-left"><a class="btn btn-lg btn-navegar signika" src="google.es">Navegar</a></div>
                     <div class="col-lg-6 text-center justify-content-center">
-                        <form class="form-inline mt-2 mt-md-0 justify-content-center">
+                        <form class="buscador form-inline mt-2 mt-md-0 justify-content-center">
                             <input class="form-control col-md-6" type="text" placeholder="Search" aria-label="Search">
                             <button type="button" class="btn btn-default btn-lg col-md-1 lupa">
                                 <img src="img/lupa.png" height="26px">
@@ -70,11 +70,19 @@
         <script>
             $(function() {
                 $(window).on("scroll", function() {
-                    if($(window).scrollTop() > 50) {
-                        $(".cabecera").addClass("active");
+                    if($(window).scrollTop() > 140) {
+                        $(".cabecera").addClass("active fixed-top");
+                        $(".primera").addClass("align-self-end");
+                        $(".logo").text("Le-Ram");
+                        $(".btn-navegar").addClass("btn-md");
+                        $(".btn-success").addClass("btn-md");
                     } else {
                         //remove the background property so it comes transparent again (defined in your css)
-                        $(".cabecera").removeClass("active");
+                        $(".cabecera").removeClass("active fixed-top");
+                        $(".btn-navegar").removeClass("btn-md");
+                        $(".btn-success").removeClass("btn-md");
+                        $(".logo").text("");
+                        $(".logo").append("Compra.Vende.<br/>Authentic streetwear.");
                     }
                 });
             });
