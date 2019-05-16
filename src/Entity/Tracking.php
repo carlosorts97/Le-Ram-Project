@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tracking
  *
  * @ORM\Table(name="tracking", indexes={@ORM\Index(name="fk_sell_tracking", columns={"sell"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TrackingRepository")
  */
 class Tracking
 {

@@ -25,7 +25,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=100, nullable=false)
+     * @ORM\Column(name="username", type="string", length=100, nullable=false, unique=true)
      */
     private $username;
 
@@ -228,9 +228,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?Roles
+    /**
+     * Returns the roles granted to the user.
+     *
+     * @return Role[] The user roles
+     */
+    public function getRoles()
     {
-        return $this->roles;
+        return array('ROLE_USER');
     }
 
     public function setRoles(?Roles $roles): self

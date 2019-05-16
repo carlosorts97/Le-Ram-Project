@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Articles
  *
- * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_user_article", columns={"user"}), @ORM\Index(name="fk_category_article", columns={"category"})})
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_category_article", columns={"category"}), @ORM\Index(name="fk_user_article", columns={"user"})})
+ * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
  */
 class Articles
 {
@@ -47,7 +47,7 @@ class Articles
     /**
      * @var \Category
      *
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category", referencedColumnName="id_category")
      * })
@@ -57,7 +57,7 @@ class Articles
     /**
      * @var \Users
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user", referencedColumnName="id_user")
      * })

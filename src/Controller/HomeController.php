@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="app_homepage")
+     * @Route("/", name="app_homepage")
      */
     public function homepage(){
 
-        return $this->render('home/home.html.twig');
+        return $this->render("home/home.html.twig");
     }
 }

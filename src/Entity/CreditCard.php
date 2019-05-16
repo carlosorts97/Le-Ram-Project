@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CreditCard
  *
  * @ORM\Table(name="credit_card", indexes={@ORM\Index(name="fk_user_card", columns={"user"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CreditCardRepository")
  */
 class CreditCard
 {
@@ -45,7 +45,7 @@ class CreditCard
     /**
      * @var \Users
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Users")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user", referencedColumnName="id_user")
      * })
@@ -93,12 +93,12 @@ class CreditCard
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?Users
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?Users $user): self
     {
         $this->user = $user;
 
