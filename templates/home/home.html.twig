@@ -1,12 +1,269 @@
-{% extends 'base.html.twig' %}
-{% block error %}{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-{% block body %}
-<<<<<<< HEAD
-    
-=======
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Le-Ram{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<header>
+    <div class="cabecera">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-3 col-sm-3 align-self-center text-left"><h3 class="icono">Le-Ram</h3></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 text-center"><h3 class="logo">Compra.Vende.<br/>Authentic streetwear.</h3></div>
+            <div class="col-lg-3 col-md-3 col-sm-3text-right align-self-start login">
+                {% if app.user == null %}
+                    <a class="login" href="{{ path('app_login') }}">Login</a> / <a class="login" href="{{ path('app_register') }}">Sign Up</a>
+                {% else %}
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle btn btn-secondary btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-user">  </span> {{ app.user.username }}
+                            </a>
 
->>>>>>> refs/remotes/origin/master
-{% endblock %}
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">Mis posts</a>
+                                <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="">Admin</a>
+                                {% endif %}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="">
+                                    Cerrar Sesion <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="row text-center align-items-end">
+            <div class="col-lg-3 col-md-3 col-sm-3 text-left"><a class="btn btn-lg btn-navegar signika" src="google.es">Navegar</a></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 text-center justify-content-center">
+                <form class="buscador form-inline mt-2 mt-md-0 justify-content-center">
+                    <input class="form-control col-md-6" type="text" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-default btn-lg col-md-1 lupa">
+                        <img src="img/lupa.png" height="26px">
+                    </button>
+                </form>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 text-right"><a class="btn btn-lg btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a></div>
+        </div>
+
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-right signika">
+            <a class="subline" href="#" id="streetwear">Streetwear</a>
+        </div>
+        <div class="col-md-6 signika">
+            <a class="subline" href="#" id="sneakers">Sneakers</a>
+        </div>
+    </div>
+</div>
+
+<div class="container streetwear">
+    <div class="row articulos">
+        <div class="col-lg-12 text-left signika">
+            <h4>Most Hyped</h4>
+        </div>
+    </div>
+    <div class="row divisor">
+        <div class="col-lg-6 text-left signika">
+            <h5>Articulos</h5>
+        </div>
+        <div class="col-lg-6 text-right signika">
+            <h5>Ver más</h5>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-4 text-center">
+            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+    </div>
+
+    <div class="row divisor">
+        <div class="col-lg-6 text-left signika">
+            <h5>Last arrivals</h5>
+        </div>
+        <div class="col-lg-6 text-right signika">
+            <h5>Ver más</h5>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+    </div>
+</div>
+
+<div class="container container_sneakers">
+    </div>
+    <div class="row articulos">
+        <div class="col-lg-12 text-left signika">
+            <h4>Most Hyped</h4>
+        </div>
+    </div>
+    <div class="row divisor">
+        <div class="col-lg-6 text-left signika">
+            <h5>Articulos</h5>
+        </div>
+        <div class="col-lg-6 text-right signika">
+            <h5>Ver más</h5>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-4 text-center">
+            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+    </div>
+
+    <div class="row divisor">
+        <div class="col-lg-6 text-left signika">
+            <h5>Last arrivals</h5>
+        </div>
+        <div class="col-lg-6 text-right signika">
+            <h5>Ver más</h5>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+            <p class="text-left">Nombre</p>
+            <p class="text-left">Precio</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Ayuda</h4>
+                <p>Devoluciones</p>
+                <p>Como detectar fakes</p>
+                <p>Condiciones de venta</p>
+                <p>Sobre la empresa</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Contactar</h4>
+                <p>Politica de privacidad</p>
+                <p>Política de cookies</p>
+                <p>Preguntas frecuentes</p>
+            </div>
+            <div class="col-md-4">
+                <img src="img/lupa.png" height="26px">
+                <img src="img/lupa.png" height="26px">
+                <img src="img/lupa.png" height="26px">
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $(function() {
+        $(window).on("scroll", function() {
+            if($(window).scrollTop() >= 40) {
+                $(".cabecera").addClass("active fixed-top");
+                $(".primera").addClass("align-self-end");
+                $(".logo").text("Le-Ram");
+                $(".container:first").addClass("margin_scroll");
+            } else {
+                //remove the background property so it comes transparent again (defined in your css)
+                $(".cabecera").removeClass("active fixed-top");
+                $(".container").removeClass("margin_scroll");
+                $(".logo").text("");
+                $(".logo").append("Compra.Vende.<br/>Authentic streetwear.");
+            }
+        });
+    });
+</script>
+<script>
+    $( "#streetwear" ).click(function () {
+        if ( $( ".streetwear" ).is( ":hidden" ) ) {
+            $( ".streetwear" ).slideDown( "slow" );
+            $( ".sneakers" ).hide("slow");
+        } else {
+            $( ".streetwear" ).hide("slow");
+        }
+    });
+
+    $( "#sneakers" ).click(function () {
+        if ( $( ".sneakers" ).is( ":hidden" ) ) {
+            $( ".sneakers" ).slideDown( "slow" );
+            $( ".streetwear" ).hide("slow");
+        } else {
+            $( ".sneakers" ).hide("slow");
+        }
+    });
+</script>
+</body>
+</html>
