@@ -19,6 +19,9 @@ body {
     min-height: 100%;
 }
 
+.divisor{
+    border-bottom: 1px solid darkgray;
+}
 .cabecera{
     width: 100%;
     padding: 15px;
@@ -32,52 +35,13 @@ body {
     margin-bottom: 10px;
     border-bottom: 1px darkgrey solid ;
 }
-/*Active es la clase que se usa para cambiar la apariencia de la cabecera cuando hacemos scroll*/
-.active{
-    background-color: white;
-}
-.active form{
-    margin-bottom: 0px;
+
+.sneakers{display: none}
+
+.margin_scroll{
+    margin-top:200px;
 }
 
-.active .row div{
-    border:1px solid white;
-}
-.active .row{
-    height: 50px;
-}
-
-.active .logo{
-    background-color:#7A306C;
-    text-align: center;
-    font-size: 13px;
-    padding: 10px;
-    width: 50px;
-    margin-left: 300px;
-}
-
-.active .icono{
-    display: none;
-}
-
-.active .login{
-    color: #222222;
-}
-
-.active .buscador input{
-    height: 30px;
-}
-
-.active .lupa{
-    height: 30px;
-}
-
-.active .lupa img{
-    height: 20px;
-    display:block;
-    margin:auto;
-}
-/*---------------------------------------END ACTIVE--------------------------------*/
 .cabecera .row div{
 }
 .cabecera .row{
@@ -118,9 +82,7 @@ body {
 .signika{
     font-family: 'Signika', sans-serif;
 }
-li{
-    list-style: none;
-}
+
 footer{
     position: absolute;
     right: 0;
@@ -143,3 +105,69 @@ footer p{
 form{
     margin-bottom: 50px;
 }
+
+/*Categoria para controlar los enlaces de Streetwear y Sneakers*/
+.subline{
+    color: #222222;
+    text-decoration: none;
+    border-bottom: 1px white solid;
+    padding: 0px;
+    font-size: 20px;
+    -webkit-transition: all ease-out .3s;
+    -moz-transition: all ease-out .3s;
+    -o-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+}
+.subline:hover{
+    border-radius: 0px;
+    border-bottom: 1px #7A306C solid;
+    color: #222222;
+    text-decoration: none;
+}
+/*--------------------------------------------------------------------------------------------------*/
+
+/*Active es la clase que se usa para cambiar la apariencia de la cabecera cuando hacemos scroll*/
+.active{
+    background-color: white;
+}
+.active form{
+    margin-bottom: 0px;
+}
+
+.active .row div{
+}
+.active .row{
+    height: 50px;
+}
+
+.active .logo{
+    background-color:#7A306C;
+    text-align: center;
+    font-size: 13px;
+    padding: 10px;
+    width: 50px;
+    margin-left: 300px;
+}
+
+.active .icono{
+    display: none;
+}
+
+.active .login{
+    color: #222222;
+}
+
+.active .buscador input{
+    height: 30px;
+}
+
+.active .lupa{
+    height: 30px;
+}
+
+.active .lupa img{
+    height: 20px;
+    display:block;
+    margin:auto;
+}
+/*---------------------------------------END ACTIVE--------------------------------*/
