@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cities;
 use App\Entity\Countries;
-use App\Entity\Roles;
+use App\Form\EditUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
@@ -32,8 +32,6 @@ class UserController extends AbstractController
         $user=new User();
         $city = new Cities();
         $country = new Countries();
-        $role = new Roles();
-        $role->setRole("User");
         $country->setName("EEESSSSPAÑA");
         $city->setName("Castelldefels");
         $city->setCountry($country);
@@ -46,8 +44,8 @@ class UserController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             //encrypt password
+            $user->setRoles(['ROLE_USER']);
             $user->setCity($city);
-            $user->setRoles($role);
             $password=$passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             //handle the entities
@@ -61,7 +59,38 @@ class UserController extends AbstractController
         }
 
         //render the form
-        return $this->render('user/regform.html.twig',[
+        return $this->render('users/regform.html.twig',[
+            'error'=>$error,
+            'form'=>$form->createView()
+        ]);
+
+    }
+    /**
+     * @Route("/editAccount",name="app_editAccount")
+     */
+    public function editAccount (Request $request, UserPasswordEncoderInterface $passwordEncoder){
+        $id = $this->getUser();
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+        //create the form
+        $form=$this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+        $error=$form->getErrors();
+
+        if($form->isSubmitted() && $form->isValid()){
+            //encrypt password
+            $password=$passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            //handle the entities
+            $entityManager=$this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_homepage');
+        }
+
+        //render the form
+        return $this->render('users/editinfo.html.twig',[
             'error'=>$error,
             'form'=>$form->createView()
         ]);
