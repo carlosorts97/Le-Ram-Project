@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Articles;
+use App\Form\NewArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Entity\User2;
-use App\Entity\Post;
+use App\Entity\User;
+use App\Entity\Cities;
+use App\Entity\Countries;
+use App\Form\UserType;
 use App\Form\EditUserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -20,35 +24,64 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  */
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/post/admin", name="app_posts_admin")
-     */
-    public function posts_admin(){
-
-        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
-        return $this->render('admin/posts.html.twig', [
-            'posts' => $posts
-        ]);
-    }
 
     /**
      * @Route("/admin", name="app_admin")
      */
     public function index()
     {
-        $users = $this->getDoctrine()->getRepository(User2::class)->findAll();
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         return $this->render('admin/index.html.twig', [
             'users' => $users
         ]);
     }
+    /**
+     * @Route("/createUser",name="app_createUser")
+     */
+    public function register (Request $request, UserPasswordEncoderInterface $passwordEncoder){
+        $user=new User();
+        $city = new Cities();
+        $country = new Countries();
+        $country->setName("EEESSSSPAÑA");
+        $city->setName("Castelldefels");
+        $city->setCountry($country);
 
+        //create the form
+        $form=$this->createForm(UserType::class,$user);
+
+        $form->handleRequest($request);
+        $error=$form->getErrors();
+
+        if($form->isSubmitted() && $form->isValid()){
+            //encrypt password
+            $user->setRoles(['ROLE_USER']);
+            $user->setCity($city);
+            $password=$passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            //handle the entities
+            $entityManager=$this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash(
+                'succes', 'User2 created'
+            );
+            return $this->redirectToRoute('app_homepage');
+        }
+
+        //render the form
+        return $this->render('users/regform.html.twig',[
+            'error'=>$error,
+            'form'=>$form->createView()
+        ]);
+
+    }
     /**
      * @Route("admin/user/{id}/edit", name="app_user_edit")
      */
     public function editUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id)
     {
         $title="Edit";
-        $user = $this->getDoctrine()->getRepository(User2::class)->find($id);
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
         //create the form
         $form = $this->createForm(EditUserType::class, $user);
 
@@ -70,48 +103,11 @@ class AdminController extends AbstractController
         }
 
         //render the form
-        return $this->render('admin/edit.html.twig',[
+        return $this->render('admin/editUser.html.twig',[
             'error'=>$error,
             'form'=>$form->createView(),
             'title'=>$title
         ]);
-    }
-
-    /**
-     * @Route("/newuser",name="app_new_user")
-     */
-    public function newUser (Request $request, UserPasswordEncoderInterface $passwordEncoder){
-
-        $title="Create";
-        $user=new User2();
-        $user->setIsActive(true);
-        //create the form
-        $form=$this->createForm(EditUserType::class,$user);
-
-        $form->handleRequest($request);
-        $error=$form->getErrors();
-
-        if($form->isSubmitted() && $form->isValid()){
-            //encrypt password
-            $password=$passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-            //handle the entities
-            $entityManager=$this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-            $this->addFlash(
-                'succes', 'User2 created'
-            );
-            return $this->redirectToRoute('app_admin');
-        }
-
-        //render the form
-        return $this->render('admin/edit.html.twig',[
-            'error'=>$error,
-            'form'=>$form->createView(),
-            'title'=>$title
-        ]);
-
     }
 
     /**
@@ -121,7 +117,7 @@ class AdminController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user = $this->getDoctrine()->getRepository(User2::class)->find($id);
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
 
         $em->remove($user);
         $em->flush();
@@ -129,6 +125,38 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin');
 
 
+    }
+    /**
+     * @Route("admin/article/{id}/edit", name="app_user_edit")
+     */
+    public function editArticle(Request $request, $id)
+    {
+        $title="Edit";
+        $article = $this->getDoctrine()->getRepository(Articles::class)->find($id);
+        //create the form
+        $form = $this->createForm(NewArticleType::class, $article);
+
+        $form->handleRequest($request);
+        $error = $form->getErrors();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //encrypt password
+            //handle the entities
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+            $this->addFlash(
+                'succes', 'User2 created'
+            );
+            return $this->redirectToRoute('app_admin');
+        }
+
+        //render the form
+        return $this->render('admin/editUser.html.twig',[
+            'error'=>$error,
+            'form'=>$form->createView(),
+            'title'=>$title
+        ]);
     }
 
 }
