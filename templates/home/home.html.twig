@@ -10,14 +10,15 @@
         <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     {% endblock %}
+
 </head>
 <body>
 <header>
     <div class="cabecera">
         <div class="row text-center">
-            <div class="col-lg-3 col-md-3 col-sm-3 align-self-center text-left"><h3 class="icono">Le-Ram</h3></div>
-            <div class="col-lg-6 col-md-6 col-sm-6 text-center"><h3 class="logo">Compra.Vende.<br/>Authentic streetwear.</h3></div>
-            <div class="col-lg-3 col-md-3 col-sm-3text-right align-self-start login">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 align-self-center text-left"><h3 class="icono">Le-Ram</h3></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center"><h3 class="logo">Compra.Vende.<br/>Authentic streetwear.</h3></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-right align-self-start login">
                 {% if app.user == null %}
                     <a class="login" href="{{ path('app_login') }}">Login</a> / <a class="login" href="{{ path('app_register') }}">Sign Up</a>
                 {% else %}
@@ -47,26 +48,26 @@
 
 
         <div class="row text-center align-items-end">
-            <div class="col-lg-3 col-md-3 col-sm-3 text-left"><a class="btn btn-lg btn-navegar signika" src="google.es">Navegar</a></div>
-            <div class="col-lg-6 col-md-6 col-sm-6 text-center justify-content-center">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-2 text-left"><a class="btn btn-lg btn-navegar signika" src="google.es">Navegar</a></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center justify-content-center">
                 <form class="buscador form-inline mt-2 mt-md-0 justify-content-center">
-                    <input class="form-control col-md-6" type="text" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-default btn-lg col-md-1 lupa">
+                    <input class="form-control col-lg-4 col-md-4 col-sm-4 col-4" type="text" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-default btn-lg col-lg-1 col-md-1 col-sm-1 col-1 lupa">
                         <img src="img/lupa.png" height="26px">
                     </button>
                 </form>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 text-right"><a class="btn btn-lg btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-2  text-right"><a class="btn btn-success btn-lg signika" href="{{ path('app_uploadArticle') }}">Venta</a></div>
         </div>
 
     </div>
 </header>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 text-right signika">
-            <a class="subline" href="#" id="streetwear">Streetwear</a>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-right signika">
+            <a class="subline subline_select" href="#" id="streetwear">Streetwear</a>
         </div>
-        <div class="col-md-6 signika">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6 signika">
             <a class="subline" href="#" id="sneakers">Sneakers</a>
         </div>
     </div>
@@ -135,8 +136,7 @@
     </div>
 </div>
 
-<div class="container container_sneakers">
-    </div>
+<div class="container sneakers_cont">
     <div class="row articulos">
         <div class="col-lg-12 text-left signika">
             <h4>Most Hyped</h4>
@@ -221,7 +221,6 @@
                 <img src="img/lupa.png" height="26px">
             </div>
         </div>
-
     </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -229,14 +228,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
+    var Fcabecera = 0;
     $(function() {
         $(window).on("scroll", function() {
-            if($(window).scrollTop() >= 40) {
+            if($(window).scrollTop() >= 40 && Fcabecera==0 ) {
                 $(".cabecera").addClass("active fixed-top");
                 $(".primera").addClass("align-self-end");
                 $(".logo").text("Le-Ram");
                 $(".container:first").addClass("margin_scroll");
-            } else {
+            } else if($(window).scrollTop() < 40 && Fcabecera==0) {
                 //remove the background property so it comes transparent again (defined in your css)
                 $(".cabecera").removeClass("active fixed-top");
                 $(".container").removeClass("margin_scroll");
@@ -245,23 +245,44 @@
             }
         });
     });
+
+    $(window).resize(function(){
+        if ($(window).width() <= 800){
+            $(".cabecera").addClass("active fixed-top");
+            $(".primera").addClass("align-self-end");
+            $(".logo").text("Le-Ram");
+            $(".container:first").addClass("margin_scroll");
+            $(".btn-success").addClass("btn-sm");
+            $(".btn-navegar").addClass("btn-sm");
+            Fcabecera=1;
+        } else if($(window).width() > 800 && $(window).scrollTop() < 40){
+            $(".cabecera").removeClass("active fixed-top");
+            $(".container").removeClass("margin_scroll");
+            $(".btn-success").removeClass("btn-sm");
+            $(".btn-navegar").removeClass("btn-sm");
+            $(".logo").text("");
+            $(".logo").append("Compra.Vende.<br/>Authentic streetwear.");
+            Fcabecera=0;
+        }
+    });
+
 </script>
 <script>
     $( "#streetwear" ).click(function () {
         if ( $( ".streetwear" ).is( ":hidden" ) ) {
             $( ".streetwear" ).slideDown( "slow" );
-            $( ".sneakers" ).hide("slow");
-        } else {
-            $( ".streetwear" ).hide("slow");
+            $( ".sneakers_cont" ).hide();
+            $("#streetwear").addClass("subline_select")
+            $("#sneakers").removeClass("subline_select")
         }
     });
 
     $( "#sneakers" ).click(function () {
-        if ( $( ".sneakers" ).is( ":hidden" ) ) {
-            $( ".sneakers" ).slideDown( "slow" );
-            $( ".streetwear" ).hide("slow");
-        } else {
-            $( ".sneakers" ).hide("slow");
+        if ( $( ".sneakers_cont" ).is( ":hidden" ) ) {
+            $( ".sneakers_cont" ).slideDown( "slow" );
+            $( ".streetwear" ).hide();
+            $("#sneakers").addClass("subline_select")
+            $("#streetwear").removeClass("subline_select")
         }
     });
 </script>
