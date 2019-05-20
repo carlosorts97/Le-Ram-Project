@@ -59,10 +59,10 @@ class EditUserType extends AbstractType
                     ]
             ])
             ->add('roles', ChoiceType::class,[
-                'choices' => Array(
-                    'Administrador'=>"ROLE_ADMIN",
-                    'Usuario'=>"ROLE_USER",
-                ),
+                'choices' => [
+                    'ROLE_USER' => "ROLE_USER",
+                    'ROLE_ADMIN' => "ROLE_ADMIN"
+                ],
                 'expanded'  => true,
                 'multiple'  => true,
             ]);
@@ -70,6 +70,6 @@ class EditUserType extends AbstractType
     }
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['data_class'=> 'App\Entity\User2']);
+        $resolver->setDefaults(['data_class'=> 'App\Entity\User']);
     }
 }
