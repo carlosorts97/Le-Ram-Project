@@ -126,8 +126,37 @@ class AdminController extends AbstractController
 
 
     }
+
     /**
-     * @Route("admin/article/{id}/edit", name="app_user_edit")
+     * @Route("/upProduct", name="app_uploadArticle")
+     */
+    public function uploadArticle(Request $Request)
+    {
+        $article = new Articles();
+        $category = new Category();
+        $category->setName("Top");
+        $id= $this->getUser();
+        //crear form
+        $form = $this->createForm(NewArticleType::class, $article);
+        //handle the request
+        $form->handleRequest($Request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $article->setCategory($category);
+            $article->setUser($id);
+            $article = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_homepage');
+        }
+        //render the form
+        return $this->render('article/upProduct.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+    /**
+     * @Route("admin/article/{id}/edit", name="app_article_edit")
      */
     public function editArticle(Request $request, $id)
     {
@@ -157,6 +186,23 @@ class AdminController extends AbstractController
             'form'=>$form->createView(),
             'title'=>$title
         ]);
+    }
+
+    /**
+     * @Route("admin/article/{id}/delete", name="app_article_delete")
+     */
+    public function deleteArticle($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $article = $this->getDoctrine()->getRepository(Articles::class)->find($id);
+
+        $em->remove($article);
+        $em->flush();
+
+        return $this->redirectToRoute('app_admin');
+
+
     }
 
 }
