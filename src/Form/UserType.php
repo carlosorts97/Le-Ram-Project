@@ -26,42 +26,42 @@ class UserType extends AbstractType
             ->add('username', TextType::class,[
                 'required' => 'required',
                 'attr'=>[
-                    'class' => 'form-username form-control',
+                    'class' => 'form-control',
                     'placeholder' => 'Username'
                 ]
             ])
             ->add('name', TextType::class,[
                 'required' => 'required',
                 'attr'=>[
-                    'class' => 'form-username form-control',
+                    'class' => 'form-control',
                     'placeholder' => 'Name'
                 ]
             ])
             ->add('surname', TextType::class,[
                 'required' => 'required',
                 'attr'=>[
-                    'class' => 'form-username form-control',
+                    'class' => 'form-control',
                     'placeholder' => 'Surname'
                 ]
             ])
             ->add('email', EmailType::class,[
                 'required' =>'required',
                 'attr' =>[
-                    'class' => 'form-email form-control',
+                    'class' => 'form-control',
                     'placeholder' => 'Email@email'
                 ]
             ])
             ->add('telephone', TextType::class,[
                 'required' => 'required',
                 'attr'=>[
-                    'class' => 'form-username form-control',
+                    'class' => 'form-control',
                     'placeholder' => 'telephone'
                 ]
             ])
             ->add('address', TextType::class,[
                 'required' => 'required',
                 'attr'=>[
-                    'class' => 'form-username form-control',
+                    'class' => 'form-control',
                     'placeholder' => 'address'
                 ]
             ])
@@ -75,13 +75,13 @@ class UserType extends AbstractType
                 'required' => 'required',
                 'first_options' =>[
                     'attr' =>[
-                        'class' => 'form-password form-control',
+                        'class' => 'form-control',
                         'placeholder' => 'Password'
                     ]
                 ],
                 'second_options' => [
                     'attr' => [
-                        'class' => 'form-password form-control',
+                        'class' => 'form-control',
                         'placeholder' => 'Repeat password'
                     ]
                 ]

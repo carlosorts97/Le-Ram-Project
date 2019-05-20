@@ -141,7 +141,6 @@ form{
 }
 
 .active .row div{
-    border: 1px black solid;
 }
 .active .row{
     height: 50px;
