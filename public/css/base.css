@@ -113,11 +113,22 @@ body {
 }
 .btn-navegar{
     background-color: #7A306C;
+    color: white;
+}
+
+.btn-navegar:hover{
+    background-color: #8959A8;
+    color: white;
 }
 
 .signika{
     font-family: 'Signika', sans-serif;
 }
+
+.margin_scroll{
+    margin-top:200px;
+}
+
 li{
     list-style: none;
 }
