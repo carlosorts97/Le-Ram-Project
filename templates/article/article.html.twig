@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        body {
+        }
+        table{
+            width: 500px;
+            margin-left: 50px;
+        }
+        td{
+            border-bottom: 1px solid grey;
+            padding:5px;
+        }
+        #new{
+            margin-left: 50px;
+            margin-bottom: 50px;
+        }
+        .bg-dark{
+            color:white;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+        <table>
+            <tr class="bg-dark">
+                <td>Email<td>
+                <td>Username<td>
+                <td></td>
+                <td></td>
+            </tr>
+                <tr>
+                    <td> {{ article.name }}<td>
+                    <td> {{ article.description }}<td>
+
+                </tr>
+        </table>
+{% endblock %}
