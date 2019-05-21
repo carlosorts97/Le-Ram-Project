@@ -15,6 +15,7 @@ use App\Form\EditUserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\Category;
 
 /**
  * Class AdminController

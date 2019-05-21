@@ -272,4 +272,9 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    public function getIdUser(): ?int
+    {
+        return $this->idUser;
+    }
 }
