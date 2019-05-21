@@ -24,6 +24,18 @@ class ArticleController extends AbstractController
     }
 
     /**
+     * @Route("/article/{id}", name="app_LoadArticle")
+     */
+    public function loadArticle($id)
+    {
+
+        $article = $this->getDoctrine()->getRepository(Articles::class)->find($id);
+        return $this->render('article/article.html.twig', array(
+            'article' => $article,
+        ));
+    }
+
+    /**
      * @Route("/upProduct", name="app_uploadArticle")
      */
     public function uploadArticle(Request $Request)

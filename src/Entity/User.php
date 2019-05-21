@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -36,6 +37,14 @@ class User implements UserInterface
      */
     private $password;
     private $plainPassword;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -106,16 +115,12 @@ class User implements UserInterface
     private $city;
 
     /**
-     * @var \Roles
+     * @ORM\Column(type="json")
      *
-     * @ORM\ManyToOne(targetEntity="Roles", cascade={"persist"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="roles", referencedColumnName="id_role")
-     * })
      */
-    private $roles;
+    private $roles = [];
 
-    public function getIdUser(): ?int
+    public function getId(): ?int
     {
         return $this->idUser;
     }
@@ -229,19 +234,18 @@ class User implements UserInterface
     }
 
     /**
-     * Returns the roles granted to the user.
-     *
-     * @return Role[] The user roles
+     * @see UserInterface
      */
-    public function getRoles()
+    public function getRoles(): array
     {
-        return array('ROLE_USER');
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[]='ROLE_USER';
+        return array_unique($roles);
     }
-
-    public function setRoles(?Roles $roles): self
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
 
