@@ -12,7 +12,7 @@ class PruebaController extends AbstractController
      */
     public function index()
     {
-        return $this->render('prueba/index.html.twig', [
+        return $this->render('article/article.html.twig', [
             'controller_name' => 'PruebaController',
         ]);
     }
