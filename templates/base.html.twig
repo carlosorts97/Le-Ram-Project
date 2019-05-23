@@ -45,10 +45,59 @@
                         {% endif %}
                     </div>
                 </div>
-
-
                 <div class="row text-center align-items-end">
-                    <div class="col-lg-3 text-left"><a class="btn btn-lg btn-navegar signika" src="google.es">Navegar</a></div>
+                    <div class="col-lg-3 text-left">
+                        <div class="dropdown show dropright">
+                            <a class="btn btn-lg btn-navegar signika dropdown-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categorias
+                            </a>
+
+                            <div class="dropdown-menu border-right" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-submenu "><a class="dropdown-item dropdown-toggle btn" href="#">Camisetas</a>
+                                    <div class="dropdown-menu border-right">
+                                        <a class="dropdown-item btn btn-lg" href="#">Todas</a>
+                                        <a class="dropdown-item btn btn-lg" href="#">Supreme</a>
+                                        <a class="dropdown-item btn btn-lg" href="#">Off-white</a>
+                                        <a class="dropdown-item btn btn-lg" href="#">Vape</a>
+                                    </div>
+                                </a>
+                                <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Todas</a>
+                                        <a class="dropdown-item" href="#">Supreme</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                    </div>
+                                </a>
+                                <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Todas</a>
+                                        <a class="dropdown-item" href="#">Supreme</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                    </div>
+                                </a>
+                                <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Todas</a>
+                                        <a class="dropdown-item" href="#">Supreme</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                    </div>
+                                </a>
+                                <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Todas</a>
+                                        <a class="dropdown-item" href="#">Supreme</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                        <a class="dropdown-item" href="#">Off-white</a>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
                     <div class="col-lg-6 text-center justify-content-center">
                         <form class="buscador form-inline mt-2 mt-md-0 justify-content-center">
                             <input class="form-control col-md-6" type="text" placeholder="Search" aria-label="Search">
@@ -93,6 +142,24 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script>
+
+            $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+                if (!$(this).next().hasClass('show')) {
+                    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                }
+                var $subMenu = $(this).next(".dropdown-menu");
+                $subMenu.toggleClass('show');
+
+
+                $(this).parents('dropdown.show').on('hidden.bs.dropdown', function(e) {
+                    $('.dropdown-submenu .show').removeClass("show");
+                });
+
+                return false;
+            });
+
+        </script>
     {% endblock %}
     </body>
 </html>

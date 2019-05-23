@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Cities;
+use App\Entity\Countries;
 use App\Form\NewArticleType;
 use App\Entity\Articles;
 use App\Entity\User;
