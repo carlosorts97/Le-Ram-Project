@@ -58,7 +58,7 @@ class Articles
      *
      * @ORM\ManyToOne(targetEntity="Brands", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="brand", referencedColumnName="id_brands")
+     *   @ORM\JoinColumn(name="brand", referencedColumnName="id_brand")
      * })
      */
     private $brand;

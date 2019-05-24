@@ -141,16 +141,13 @@ class AdminController extends AbstractController
         //crear form
 
         $form = $this->createForm(NewArticleType::class, $article);
-        $formCategory= $this->createForm(CategoryType::class, $category);
         //handle the request
 
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($form->getData());
+
             $article = $form->getData();
 
-
-            die();
             $brand = $article->getBrand();
             $category = $article->getCategory();
             $article->setCategory($this->getDoctrine()->getRepository(Category::class)->findOneBy(['name'=>$category->getName()]));
@@ -163,7 +160,7 @@ class AdminController extends AbstractController
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView(), 'formCategory' => $formCategory->createView()
+            'form' => $form->createView()
         ]);
     }
     /**

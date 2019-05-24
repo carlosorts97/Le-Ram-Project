@@ -8,6 +8,7 @@
 
 namespace App\Form;
 
+use App\Entity\Cities;
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -17,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -63,6 +64,9 @@ class UserType extends AbstractType
                     'placeholder' => 'telephone'
                 ]
             ])
+            ->add('city', EntityType::class, [
+                'class' => Cities::class,
+                'choice_label' => 'name'])
             ->add('address', TextType::class,[
                 'required' => 'required',
                 'label' => ' ',
