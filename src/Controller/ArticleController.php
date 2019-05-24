@@ -155,21 +155,13 @@ class ArticleController extends AbstractController
             'size' =>$size
 
         ]);
+        $article->getStock()->RemoveStock();
         $em->remove($article);
         $em->flush();
 
         return $this->redirectToRoute('app_homepage');
 
 
-    }
-
-
-
-    public function consultas(){
-        $users = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        dump($users);
-        die();
-        return $users;
     }
 
 }

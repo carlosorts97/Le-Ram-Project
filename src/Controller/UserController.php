@@ -45,7 +45,6 @@ class UserController extends AbstractController
      */
     public function register (Request $request, UserPasswordEncoderInterface $passwordEncoder){
         $user=new User();
-        $city = $this->getDoctrine()->getRepository(Cities::class)->find(1);
 
         //create the form
         $form=$this->createForm(UserType::class,$user);
@@ -56,7 +55,6 @@ class UserController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             //encrypt password
             $user->setRoles(['ROLE_USER']);
-            $user->setCity($city);
             $password=$passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             //handle the entities

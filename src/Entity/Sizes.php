@@ -58,22 +58,37 @@ class Sizes
     private $stock;
 
     /**
-     * @var \Users
+     * @var \User
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Users")
+     * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user", referencedColumnName="id_user")
      * })
      */
     private $user;
 
+    /**
+     * Sizes constructor.
+     * @param float $comeUp
+     */
+    public function __construct()
+    {
+        $this->comeUp = 0;
+    }
+
     public function getSize(): ?string
     {
         return $this->size;
     }
 
+    public function setSize(String $size): self
+    {
+        $this->size = $size;
+
+        return $this;
+    }
     public function getPrice(): ?float
     {
         return $this->price;
@@ -122,12 +137,12 @@ class Sizes
         return $this;
     }
 
-    public function getUser(): ?Users
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?Users $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

@@ -51,6 +51,15 @@ class Stock
 
         return $this;
     }
+    public function RemoveStock(): self
+    {
+        $stock = $this->stock;
+        if($this->getStock()>0) {
+            $this->stock = $stock - 1;
+        }
+
+        return $this;
+    }
 
 
 }
