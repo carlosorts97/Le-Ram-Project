@@ -25,6 +25,7 @@ class UserType extends AbstractType
         $builder
             ->add('username', TextType::class,[
                 'required' => 'required',
+                'label' => ' ',
                 'attr'=>[
                     'class' => 'form-control',
                     'placeholder' => 'Username'
@@ -32,6 +33,7 @@ class UserType extends AbstractType
             ])
             ->add('name', TextType::class,[
                 'required' => 'required',
+                'label' => ' ',
                 'attr'=>[
                     'class' => 'form-control',
                     'placeholder' => 'Name'
@@ -39,6 +41,7 @@ class UserType extends AbstractType
             ])
             ->add('surname', TextType::class,[
                 'required' => 'required',
+                'label' => ' ',
                 'attr'=>[
                     'class' => 'form-control',
                     'placeholder' => 'Surname'
@@ -46,6 +49,7 @@ class UserType extends AbstractType
             ])
             ->add('email', EmailType::class,[
                 'required' =>'required',
+                'label' => ' ',
                 'attr' =>[
                     'class' => 'form-control',
                     'placeholder' => 'Email@email'
@@ -53,6 +57,7 @@ class UserType extends AbstractType
             ])
             ->add('telephone', TextType::class,[
                 'required' => 'required',
+                'label' => ' ',
                 'attr'=>[
                     'class' => 'form-control',
                     'placeholder' => 'telephone'
@@ -60,6 +65,7 @@ class UserType extends AbstractType
             ])
             ->add('address', TextType::class,[
                 'required' => 'required',
+                'label' => ' ',
                 'attr'=>[
                     'class' => 'form-control',
                     'placeholder' => 'address'
@@ -67,19 +73,25 @@ class UserType extends AbstractType
             ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
+                'label' => ' ',
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
+                'attr'=>[
+                    'class' => 'form-control',
+                ]
             ])
             ->add('plainpassword',RepeatedType::class,[
                 'type' => PasswordType::class,
                 'required' => 'required',
                 'first_options' =>[
+                    'label' => ' ',
                     'attr' =>[
                         'class' => 'form-control',
                         'placeholder' => 'Password'
                     ]
                 ],
                 'second_options' => [
+                    'label' => ' ',
                     'attr' => [
                         'class' => 'form-control',
                         'placeholder' => 'Repeat password'
