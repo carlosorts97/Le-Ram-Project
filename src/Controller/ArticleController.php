@@ -3,14 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-<<<<<<< HEAD
-use App\Entity\Cities;
-use App\Entity\Countries;
-=======
+
 use App\Entity\Sizes;
 use App\Entity\Stock;
-use App\Entity\Brands;
->>>>>>> 62ef4ebba9b17f6848aa1c28640dec73d38aed2c
 use App\Form\NewArticleType;
 use App\Entity\Articles;
 use App\Entity\User;
@@ -45,9 +40,9 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/up3Product/{id}", name="app_upload3Article")
+     * @Route("/uploadProduct/{id}", name="app_uploadProduct")
      */
-    public function uploadA3rticle(Request $Request, $id)
+    public function uploadProduct(Request $Request, $id)
     {
         $article = new Sizes();
         $idUser= $this->getUser();

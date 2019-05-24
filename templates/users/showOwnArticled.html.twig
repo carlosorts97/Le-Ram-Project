@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+{% block body %}
+    <h2 style="margin-top: 10px">Ultimos Post</h2>
+
+    <div class="post">
+        <h3>Publicado</h3><h3>Tema</h3><h3 class="author">Autor</h3>
+    </div>
+
+    <table>
+        {% for article in articles %}
+            <tr class="visualizar-post">
+                <td class="titleFecha">{{ article.article.brand.name}}</td>
+                <td class="titleFecha">{{ article.article.name}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

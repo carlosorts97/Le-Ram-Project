@@ -35,6 +35,24 @@ class UserController extends AbstractController
         $id = $this->getUser();
         $sizes= new Sizes();
         $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
+        /*foreach ($sizes as $size) {
+            $articles = $this->getDoctrine()->getRepository(Articles::class)->find($size->getArticle()->getIdArticle());
+            dump($size);
+            die();
+        }*/
+        return $this->render('users/showOwnArticled.html.twig', [
+            'articles' => $sizes
+        ]);
+    }
+
+    /**
+     * @Route("/user/orders", name="app_userOrder")
+     */
+    public function showOrders()
+    {
+        $id = $this->getUser();
+        $sizes= new Sizes();
+        $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
         $articles = $this->getDoctrine()->getRepository(Articles::class)->find($sizes->getArticle());
         return $this->render('admin/index.html.twig', [
             'articles' => $articles

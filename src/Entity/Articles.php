@@ -69,6 +69,10 @@ class Articles
      * @ORM\ManyToMany(targetEntity="Sells", mappedBy="article")
      */
     private $sell;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="article")
+     */
+    private $image;
 
     /**
      * Constructor
@@ -95,6 +99,10 @@ class Articles
         return $this;
     }
 
+    public function getImage(): ?Images
+    {
+       return $this->image;
+    }
     public function getDescription(): ?string
     {
         return $this->description;
