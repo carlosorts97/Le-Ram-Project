@@ -46,19 +46,8 @@ class Stock
     }
     public function AddStock(): self
     {
-        if($this->stock == null){
-            $this->stock = 1;
-        }else {
-            $stockActual = $this->stock;
-            $this->stock = $stockActual + 1;
-        }
-
-        return $this;
-    }
-    public function RemoveStock(): self
-    {
-        $stockActual=$this->stock ;
-        $this->stock= $stockActual - 1;
+        $stock = $this->stock;
+        $this->stock = $stock +1;
 
         return $this;
     }

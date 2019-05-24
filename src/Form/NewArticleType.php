@@ -9,11 +9,13 @@
 namespace App\Form;
 
 use App\Entity\Articles;
+use App\Entity\Brands;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 class NewArticleType extends AbstractType
 {
@@ -38,15 +40,13 @@ class NewArticleType extends AbstractType
                 'attr' => ['rows' => 20, 'class'=>'form-control'],
                 'label' => 'Description'
             ])
-            ->add('description', null, [
-                'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'Description'
-            ])
+            ->add('category', CategoryType::class)
             ->add('retailDate', DateType::class,[
                 'label' => 'Retail date',
                 'required' => false
             ])
         ;
+
     }
     /**
      * {@inheritdoc}
@@ -57,4 +57,5 @@ class NewArticleType extends AbstractType
             'data_class' => Articles::class,
         ]);
     }
+
 }

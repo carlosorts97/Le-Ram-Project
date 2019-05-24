@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Sizes;
 use App\Entity\Stock;
+use App\Entity\Brands;
 use App\Form\NewArticleType;
 use App\Entity\Articles;
 use App\Entity\User;
@@ -38,32 +39,6 @@ class ArticleController extends AbstractController
         ));
     }
 
-    /**
-     * @Route("/upProduct", name="app_uploadArticle")
-     */
-    public function uploadArticle(Request $Request)
-    {
-        $article = new Articles();
-        $category = new Category();
-        $category->setName("Top");
-        //crear form
-        $form = $this->createForm(NewArticleType::class, $article);
-        //handle the request
-        $form->handleRequest($Request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $article->setCategory($category);
-            $article = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_homepage');
-        }
-        //render the form
-        return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
     /**
      * @Route("/up3Product/{id}", name="app_upload3Article")
      */
@@ -186,6 +161,15 @@ class ArticleController extends AbstractController
         return $this->redirectToRoute('app_homepage');
 
 
+    }
+
+
+
+    public function consultas(){
+        $users = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        dump($users);
+        die();
+        return $users;
     }
 
 }

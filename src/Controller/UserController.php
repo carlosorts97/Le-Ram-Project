@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Articles;
 use App\Entity\Cities;
 use App\Entity\Countries;
+use App\Entity\Sizes;
 use App\Form\EditUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,15 +28,24 @@ class UserController extends AbstractController
         ]);
     }
     /**
+     * @Route("/user/articles", name="app_showArticles")
+     */
+    public function showArticles()
+    {
+        $id = $this->getUser();
+        $sizes= new Sizes();
+        $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->find($sizes->getArticle());
+        return $this->render('admin/index.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+    /**
      * @Route("/register",name="app_register")
      */
     public function register (Request $request, UserPasswordEncoderInterface $passwordEncoder){
         $user=new User();
-        $city = new Cities();
-        $country = new Countries();
-        $country->setName("EEESSSSPAÑA");
-        $city->setName("Castelldefels");
-        $city->setCountry($country);
+        $city = $this->getDoctrine()->getRepository(Cities::class)->find(1);
 
         //create the form
         $form=$this->createForm(UserType::class,$user);
@@ -113,6 +124,6 @@ class UserController extends AbstractController
      * @Route("/logout", name="app_logout")
      */
     public function logout(){
-        $this->redirectToRoute('/');
+        $this->redirectToRoute('app_homepage');
     }
 }
