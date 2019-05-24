@@ -4,23 +4,22 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Category
+ * Brands
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @ORM\Table(name="brands")
+ * @ORM\Entity(repositoryClass="App\Repository\BrandRepository")
  */
-class Category
+class Brands
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id_category", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\Column(name="id_brand", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idCategory;
+    private $idBrand;
 
     /**
      * @var string
@@ -29,9 +28,9 @@ class Category
      */
     private $name;
 
-    public function getIdCategory(): ?int
+    public function getIdBrand(): ?int
     {
-        return $this->idCategory;
+        return $this->idBrand;
     }
 
     public function getName(): ?string

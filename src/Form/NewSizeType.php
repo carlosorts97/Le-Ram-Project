@@ -2,22 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: linux
- * Date: 16/05/19
- * Time: 15:50
+ * Date: 20/05/19
+ * Time: 18:18
  */
 
 namespace App\Form;
 
-use App\Entity\Articles;
-use App\Entity\Brands;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+use App\Entity\Sizes;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
-
-class NewArticleType extends AbstractType
+class NewSizeType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -32,21 +29,16 @@ class NewArticleType extends AbstractType
         // this validation, set the 'required' attribute to 'false':
         // $builder->add('title', null, ['required' => false, ...]);
         $builder
-            ->add('name', null, [
+            ->add('size', null, [
                 'attr' => ['autofocus' => true, 'class'=>'form-control'],
-                'label' => 'Name',
+                'label' => 'size',
             ])
-            ->add('description', null, [
+            ->add('price', null, [
                 'attr' => ['rows' => 20, 'class'=>'form-control'],
                 'label' => 'Description'
             ])
-            ->add('category', CategoryType::class)
-            ->add('retailDate', DateType::class,[
-                'label' => 'Retail date',
-                'required' => false
-            ])
-        ;
 
+        ;
     }
     /**
      * {@inheritdoc}
@@ -54,8 +46,7 @@ class NewArticleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Articles::class,
+            'data_class' => Sizes::class,
         ]);
     }
-
 }

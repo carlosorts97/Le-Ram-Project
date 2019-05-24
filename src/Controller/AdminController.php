@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Brands;
+use App\Form\CategoryType;
 use App\Form\NewArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,6 +17,7 @@ use App\Form\EditUserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\Category;
 
 /**
  * Class AdminController
@@ -36,7 +39,7 @@ class AdminController extends AbstractController
         ]);
     }
     /**
-     * @Route("/createUser",name="app_createUser")
+     * @Route("/admin/createUser",name="app_createUser")
      */
     public function register (Request $request, UserPasswordEncoderInterface $passwordEncoder){
         $user=new User();
@@ -128,23 +131,31 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/upProduct", name="app_uploadArticle")
+     * @Route("/admin/upProduct", name="app_uploadArticle")
      */
     public function uploadArticle(Request $Request)
     {
+
         $article = new Articles();
         $category = new Category();
-        $category->setName("Top");
-        $id= $this->getUser();
         //crear form
+
         $form = $this->createForm(NewArticleType::class, $article);
+        $formCategory= $this->createForm(CategoryType::class, $category);
         //handle the request
+
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $article->setCategory($category);
-            $article->setUser($id);
+            dump($form->getData());
             $article = $form->getData();
+
+
+            die();
+            $brand = $article->getBrand();
+            $category = $article->getCategory();
+            $article->setCategory($this->getDoctrine()->getRepository(Category::class)->findOneBy(['name'=>$category->getName()]));
+            $article->setBrand($this->getDoctrine()->getRepository(Brands::class)->findOneBy(['name'=>$brand->getName()]));
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
@@ -152,7 +163,7 @@ class AdminController extends AbstractController
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(), 'formCategory' => $formCategory->createView()
         ]);
     }
     /**

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Articles
  *
- * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_category_article", columns={"category"}), @ORM\Index(name="fk_user_article", columns={"user"})})
+ * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_category_article", columns={"category"})})
  * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
  */
 class Articles
@@ -53,16 +53,15 @@ class Articles
      * })
      */
     private $category;
-
     /**
-     * @var \Users
+     * @var \Brands
      *
-     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Brands", cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="brand", referencedColumnName="id_brands")
      * })
      */
-    private $user;
+    private $brand;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -132,18 +131,6 @@ class Articles
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Sells[]
      */
@@ -171,5 +158,18 @@ class Articles
 
         return $this;
     }
+
+    public function getBrand(): ?Brands
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brands $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
 
 }

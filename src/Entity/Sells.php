@@ -90,24 +90,24 @@ class Sells
         return $this;
     }
 
-    public function getBuyer(): ?User
+    public function getBuyer(): ?Users
     {
         return $this->buyer;
     }
 
-    public function setBuyer(?User $buyer): self
+    public function setBuyer(?Users $buyer): self
     {
         $this->buyer = $buyer;
 
         return $this;
     }
 
-    public function getSeller(): ?User
+    public function getSeller(): ?Users
     {
         return $this->seller;
     }
 
-    public function setSeller(?User $seller): self
+    public function setSeller(?Users $seller): self
     {
         $this->seller = $seller;
 

@@ -2,17 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * User
+ * Users
  *
- * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_roles_users", columns={"roles"}), @ORM\Index(name="fk_city_users", columns={"city"})})
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_city_users", columns={"city"})})
+ * @ORM\Entity
  */
-class User implements UserInterface
+class Users
 {
     /**
      * @var int
@@ -26,7 +24,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=100, nullable=false, unique=true)
+     * @ORM\Column(name="username", type="string", length=100, nullable=false)
      */
     private $username;
 
@@ -36,31 +34,6 @@ class User implements UserInterface
      * @ORM\Column(name="password", type="string", length=100, nullable=false)
      */
     private $password;
-    private $plainPassword;
-
-    /**
-     * User constructor.
-     */
-    public function __construct()
-    {
-        $this->articles = new ArrayCollection();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    /**
-     * @param mixed $plainPassword
-     */
-    public function setPlainPassword($plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
-    }
 
     /**
      * @var string
@@ -105,22 +78,23 @@ class User implements UserInterface
     private $address;
 
     /**
+     * @var json
+     *
+     * @ORM\Column(name="roles", type="json", nullable=false)
+     */
+    private $roles;
+
+    /**
      * @var \Cities
      *
-     * @ORM\ManyToOne(targetEntity="Cities", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Cities")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="city", referencedColumnName="id_city")
      * })
      */
     private $city;
 
-    /**
-     * @ORM\Column(type="json")
-     *
-     */
-    private $roles = [];
-
-    public function getId(): ?int
+    public function getIdUser(): ?int
     {
         return $this->idUser;
     }
@@ -221,6 +195,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
     public function getCity(): ?Cities
     {
         return $this->city;
@@ -233,48 +219,5 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[]='ROLE_USER';
-        return array_unique($roles);
-    }
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-        return $this;
-    }
 
-
-    /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     *
-     * @return string|null The salt
-     */
-    public function getSalt()
-    {
-        // TODO: Implement getSalt() method.
-    }
-
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
-    }
-
-    public function getIdUser(): ?int
-    {
-        return $this->idUser;
-    }
 }

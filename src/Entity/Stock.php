@@ -44,6 +44,13 @@ class Stock
 
         return $this;
     }
+    public function AddStock(): self
+    {
+        $stock = $this->stock;
+        $this->stock = $stock +1;
+
+        return $this;
+    }
 
 
 }

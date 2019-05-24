@@ -2,22 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: linux
- * Date: 16/05/19
- * Time: 15:50
+ * Date: 23/05/19
+ * Time: 16:12
  */
 
 namespace App\Form;
 
-use App\Entity\Articles;
 use App\Entity\Brands;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
-class NewArticleType extends AbstractType
+class BrandType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -34,19 +31,9 @@ class NewArticleType extends AbstractType
         $builder
             ->add('name', null, [
                 'attr' => ['autofocus' => true, 'class'=>'form-control'],
-                'label' => 'Name',
-            ])
-            ->add('description', null, [
-                'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'Description'
-            ])
-            ->add('category', CategoryType::class)
-            ->add('retailDate', DateType::class,[
-                'label' => 'Retail date',
-                'required' => false
+                'label' => 'brand',
             ])
         ;
-
     }
     /**
      * {@inheritdoc}
@@ -54,7 +41,7 @@ class NewArticleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Articles::class,
+            'data_class' => Brands::class,
         ]);
     }
 
