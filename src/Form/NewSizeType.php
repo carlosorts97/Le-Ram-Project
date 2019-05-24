@@ -35,7 +35,7 @@ class NewSizeType extends AbstractType
             ])
             ->add('price', null, [
                 'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'Description'
+                'label' => 'Precio'
             ])
 
         ;

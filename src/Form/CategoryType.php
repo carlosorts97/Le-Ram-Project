@@ -56,8 +56,11 @@ class CategoryType extends AbstractType
             ->add(
 
                 'name', ChoiceType::class,  array(
-                    'mapped' => false,
-                    'choices'  => $category
+                'label'=>'Brand Name',
+                'choices'=>array($category),
+                'choice_label' => function($category, $key, $index) {
+                    return strtoupper($category->getName());
+                },
             ))
         ;
     }
