@@ -3,14 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-<<<<<<< HEAD
 use App\Entity\Cities;
 use App\Entity\Countries;
-=======
 use App\Entity\Sizes;
 use App\Entity\Stock;
 use App\Entity\Brands;
->>>>>>> 62ef4ebba9b17f6848aa1c28640dec73d38aed2c
 use App\Form\NewArticleType;
 use App\Entity\Articles;
 use App\Entity\User;

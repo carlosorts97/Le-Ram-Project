@@ -27,46 +27,15 @@
                             <option data-tokens="popular">Popular</option>
                         </select>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-center">Nombre</p>
-                        <p class="text-center">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-center">Nombre</p>
-                        <p class="text-left">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-left">Nombre</p>
-                        <p class="text-left">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-left">Nombre</p>
-                        <p class="text-left">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-center">Nombre</p>
-                        <p class="text-center">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-center">Nombre</p>
-                        <p class="text-left">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-left">Nombre</p>
-                        <p class="text-left">Precio</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
-                        <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                        <p class="text-left">Nombre</p>
-                        <p class="text-left">Precio</p>
-                    </div>
+                    {% for article in articles %}
+                        <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
+                            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+                            <p class="text-center">{{ article.name }}</p>
+                            <p class="text-center">{{ article.category.name }}</p>
+                        </div>
+                    {% endfor %}
+                    {{ category }}
+                    {{ brand }}
                 </div>
             </div>
         </div>
