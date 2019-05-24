@@ -7,6 +7,7 @@
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('css/base.css') }}">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@
                     </div>
 
                     <div class="col-6 col-md-6 col-lg-6 text-center link">
-                        <h3 class="offset-3 offset-lg-6 logo text-center">
+                        <h3 class="offset-4 offset-md-4 offset-lg-5 logo text-center">
                             <a href="{{ path('app_homepage') }}">Le-Ram</a>
                         </h3>
                     </div>
@@ -130,26 +131,27 @@
     <footer>
         <div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4">
                     <h4>Ayuda</h4>
                     <p>Devoluciones</p>
                     <p>Como detectar fakes</p>
                     <p>Condiciones de venta</p>
                     <p>Sobre la empresa</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4">
                     <h4>Contactar</h4>
                     <p>Politica de privacidad</p>
                     <p>Política de cookies</p>
                     <p>Preguntas frecuentes</p>
                 </div>
-                <div class="col-md-4">
-                    <img src="img/lupa.png" height="26px">
-                    <img src="img/lupa.png" height="26px">
-                    <img src="img/lupa.png" height="26px">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="row col-6">
+                        <i class="fa fa-instagram col-4 col-sm-4 col-md-4 col-lg-4" style="font-size:26px" aria-hidden="true"></i>
+                        <i class="fa fa-facebook col-4 col-sm-4 col-md-4 col-lg-4" style="font-size:26px" aria-hidden="true"></i>
+                        <i class="fa fa-twitter col-4 col-sm-4 col-md-4 col-lg-4" style="font-size:26px" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
-
         </div>
     </footer>
     {% block footer %}{% endblock %}

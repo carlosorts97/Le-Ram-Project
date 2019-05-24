@@ -36,10 +36,18 @@ body {
     border-bottom: 1px darkgrey solid ;
 }
 
+footer i{
+    width: 200px;
+}
+
 .sneakers_cont{display: none}
 
-.margin_scroll{
-    margin-top:200px;
+.margin_scroll-lg{
+    margin-top:250px;
+}
+
+.margin_scroll-sm{
+    margin-top:140px;
 }
 
 .cabecera .row{
@@ -75,9 +83,11 @@ body {
 }
 .btn-navegar{
     background-color: #7A306C;
+    color: white;
 }
 .btn-navegar:hover{
     background-color: #8959A8;
+    color: white;
 }
 .signika{
     font-family: 'Signika', sans-serif;
@@ -140,11 +150,6 @@ form{
     margin-bottom: 0px;
 }
 
-.active .row div{
-}
-.active .row{
-    height: 50px;
-}
 
 .active .logo{
     background-color:#7A306C;
@@ -177,78 +182,39 @@ form{
     margin:auto;
 }
 /*---------------------------------------END ACTIVE--------------------------------*/
-
-/*
-  ##Device = Desktops
-  ##Screen = 1281px to higher resolution desktops
-*/
-
-@media (min-width: 1281px) {
-
-//CSS
-
+.dropdown-submenu {
+    position: relative;
 }
 
-/*
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-
-//CSS
-
+.dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
 }
 
-/*
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-//CSS
-
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 10%;
+    margin-left: .1rem;
+    margin-right: .1rem;
 }
 
-/*
-  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-
-//CSS
-
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
 }
 
-/*
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
-
-@media (min-width: 481px) and (max-width: 767px) {
-
-    .cabecera{
-        font-size: 12px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
 }
 
-/*
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
+.dropdown-item{
+    border: 3px solid white;
+}
 
-@media (min-width: 320px) and (max-width: 480px) {
-
-    .cabecera{
-        font-size: 12px;
-        padding-left: 10px;
-        padding-right: 60px;
-    }
-    .logo{margin-left: 20%;}
-
+.dropdown-item:hover{
+    border-right: 3px solid #7A306C;
 }
