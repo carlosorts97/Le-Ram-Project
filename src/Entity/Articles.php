@@ -80,6 +80,7 @@ class Articles
     public function __construct()
     {
         $this->sell = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIdArticle(): ?int
@@ -99,10 +100,18 @@ class Articles
         return $this;
     }
 
-    public function getImage(): ?Images
+    public function getImage(): Collection
     {
-       return $this->image;
+        return $this->image;
     }
+    public function addImage(Images $image): self
+    {
+        if (!$this->image->contains($image)) {
+            $this->image[] = $image;
+        }
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;

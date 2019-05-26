@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c20ad16dcb9658cfe81b9306f31ece9",
+    "content-hash": "776388e0935268f001ff15405fb8d6e4",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -384,18 +384,6 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-<<<<<<< HEAD
-            "version": "1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "6e15d2d9a8f90c0f9b5664b0db92686ff14fcd7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/6e15d2d9a8f90c0f9b5664b0db92686ff14fcd7d",
-                "reference": "6e15d2d9a8f90c0f9b5664b0db92686ff14fcd7d",
-=======
             "version": "1.11.1",
             "source": {
                 "type": "git",
@@ -406,7 +394,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/09a38417339dc93849d051b914aae3947eb231a7",
                 "reference": "09a38417339dc93849d051b914aae3947eb231a7",
->>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
                 "shasum": ""
             },
             "require": {
@@ -482,11 +469,7 @@
                 "orm",
                 "persistence"
             ],
-<<<<<<< HEAD
-            "time": "2019-05-10T13:27:28+00:00"
-=======
             "time": "2019-05-13T14:30:38+00:00"
->>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -1346,16 +1329,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.1",
+            "version": "v4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
+                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
-                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
+                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
                 "shasum": ""
             },
             "require": {
@@ -1393,7 +1376,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-02-16T20:54:15+00:00"
+            "time": "2019-05-25T20:07:01+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4321,18 +4304,6 @@
         },
         {
             "name": "twig/twig",
-<<<<<<< HEAD
-            "version": "v2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/Twig.git",
-                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
-                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
-=======
             "version": "v2.10.0",
             "source": {
                 "type": "git",
@@ -4343,7 +4314,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/twigphp/Twig/zipball/5240e21982885b76629552d83b4ebb6d41ccde6b",
                 "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b",
->>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
                 "shasum": ""
             },
             "require": {
@@ -4359,11 +4329,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
-                    "dev-master": "2.9-dev"
-=======
                     "dev-master": "2.10-dev"
->>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
                 }
             },
             "autoload": {
@@ -4401,11 +4367,7 @@
             "keywords": [
                 "templating"
             ],
-<<<<<<< HEAD
-            "time": "2019-04-28T06:57:38+00:00"
-=======
             "time": "2019-05-14T12:03:52+00:00"
->>>>>>> b571b6dedd0498d58c9b0043cced0f6039fffe00
         },
         {
             "name": "zendframework/zend-code",

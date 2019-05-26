@@ -52,10 +52,7 @@ class NewArticleType extends AbstractType
                 'label' => 'Retail date',
                 'required' => false
             ])
-            ->add('image', ImageType::class,[
-                'label' => 'Retail date',
-                'required' => false
-            ])
+            ->add('image', ImageType::class)
 
         ;
 

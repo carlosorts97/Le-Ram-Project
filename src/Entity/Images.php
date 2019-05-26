@@ -26,7 +26,7 @@ class Images
      *
      * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
-    private $url;
+    private $image;
 
     /**
      * @var \Articles
@@ -43,14 +43,14 @@ class Images
         return $this->idImage;
     }
 
-    public function getUrl(): ?string
+    public function getImage(): ?string
     {
-        return $this->url;
+        return $this->image;
     }
 
-    public function setUrl(string $url): self
+    public function setImage(string $image): self
     {
-        $this->url = $url;
+        $this->image = $image;
 
         return $this;
     }
