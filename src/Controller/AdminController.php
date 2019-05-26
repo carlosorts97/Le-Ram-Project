@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Category;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Class AdminController
  * @package App\Controller
@@ -135,7 +135,6 @@ class AdminController extends AbstractController
      */
     public function uploadArticle(Request $Request)
     {
-
         $article = new Articles();
         $category = new Category();
         //crear form
@@ -145,6 +144,11 @@ class AdminController extends AbstractController
 
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
 
             $article = $form->getData();
 
@@ -163,6 +167,7 @@ class AdminController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
     /**
      * @Route("admin/article/{id}/edit", name="app_article_edit")
      */

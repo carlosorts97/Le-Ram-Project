@@ -17,6 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Form\ImageType;
 
 
 class NewArticleType extends AbstractType
@@ -52,6 +53,7 @@ class NewArticleType extends AbstractType
                 'label' => 'Retail date',
                 'required' => false
             ])
+            ->add('image',ImageType::class)
         ;
 
     }

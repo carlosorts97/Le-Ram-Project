@@ -71,11 +71,17 @@ class Articles
     private $sell;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="article")
+     */
+    private $image;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sell = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIdArticle(): ?int
@@ -168,6 +174,18 @@ class Articles
     {
         $this->brand = $brand;
 
+        return $this;
+    }
+
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+    public function setImage(Images $image): self
+    {
+        if (!$this->image->contains($image)) {
+            $this->image[] = $image;
+        }
         return $this;
     }
 
