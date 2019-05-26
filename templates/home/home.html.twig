@@ -149,20 +149,9 @@
     </div>
     <div class="row mb-5">
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
+            {% for article in streetWear_hyped %}
             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
-            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
-            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left">Nombre</p>
+            <p class="text-left">{{ article.name }}</p>
             <p class="text-left">Precio</p>
         </div>
     </div>

@@ -17,7 +17,13 @@
             <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                 <div class="row">
                     <div class="col-lg-6 text-left border-bottom pb-3">
-                        <div class="btn btn-light align-self-center">Supreme</div> > <div class="btn btn-light">Camisetas</div>
+                        <div class="btn btn-light align-self-center">
+                            {{ category.name }}
+                        </div>
+                        >
+                        <div class="btn btn-light align-self-center">
+                                {{ brand.name }}
+                        </div>
                     </div>
                     <div class="col-lg-6 text-right border-bottom">
                         <select class="selectpicker" data-live-search="true">
@@ -30,12 +36,10 @@
                     {% for article in articles %}
                         <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
                             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-                            <p class="text-center">{{ article.name }}</p>
-                            <p class="text-center">{{ article.category.name }}</p>
+                            <p class="text-center">{{ article.name}}</p>
+                            <p class="text-center">{{ article.price | number_format}}€</p>
                         </div>
                     {% endfor %}
-                    {{ category }}
-                    {{ brand }}
                 </div>
             </div>
         </div>
